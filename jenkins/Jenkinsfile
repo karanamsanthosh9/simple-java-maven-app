@@ -3,12 +3,21 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    parameters{
+    booleanParam(defaultValue: false, description: "Enable service?", name: "myBoolean")
+    }
     stages {
         stage("Hello")
         {
          steps{
             echo "Hey there"
          }
+        }
+        stage("Demo")
+        {
+        steps{
+            echo "booleanParam is set to : ${params.myBoolean}"
+        }
         }
         stage('Build') {
             steps {
