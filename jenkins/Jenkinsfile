@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'M3' // This must match the name you gave in Tools
+    }
     options {
         skipStagesAfterUnstable()
     }
