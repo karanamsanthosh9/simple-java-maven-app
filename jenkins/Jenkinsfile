@@ -7,6 +7,12 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        stage("Hello")
+        {
+         steps{
+            sh echo "Hey there"
+         }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
