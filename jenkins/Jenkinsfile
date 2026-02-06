@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven 'M3' // This must match the name you gave in Tools
-    }
     options {
         skipStagesAfterUnstable()
     }
@@ -15,14 +12,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'export PATH=$PATH:/usr/local/bin:/usr/bin'
                 sh 'mvn -B -DskipTests clean package'
-                
             }
         }
         stage('Test') {
             steps {
-                sh 'export PATH=$PATH:/usr/local/bin:/usr/bin'
                 sh 'mvn test'
             }
             post {
