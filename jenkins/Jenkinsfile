@@ -15,13 +15,14 @@ pipeline {
         }
         stage('Build') {
             steps {
-                export PATH=$PATH:/usr/local/bin:/usr/bin
+                sh 'export PATH=$PATH:/usr/local/bin:/usr/bin'
                 sh 'mvn -B -DskipTests clean package'
+                
             }
         }
         stage('Test') {
             steps {
-                export PATH=$PATH:/usr/local/bin:/usr/bin
+                sh 'export PATH=$PATH:/usr/local/bin:/usr/bin'
                 sh 'mvn test'
             }
             post {
